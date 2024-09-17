@@ -11,11 +11,11 @@ const RouteStack: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/portfolio" element={<Home />} />
 
         {/* example of route that requires authentication */}
         <Route
-          path="/protected"
+          path="/portfolio/protected"
           element={
             <RequireAuth>
               <Protected />
@@ -24,7 +24,7 @@ const RouteStack: FC = () => {
         />
 
         {/* not found routes will hit here */}
-        <Route path="*" element={<NotFound />} />
+        <Route path="portfolio/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
