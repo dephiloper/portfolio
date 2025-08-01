@@ -1,6 +1,6 @@
 {
-  "name": "headkino-website",
-  "homepage": "https://headkino.com",
+  "name": "personal-website",
+  "homepage": "https://philipp.boens.ch",
   "private": true,
   "version": "1.0.0",
   "scripts": {

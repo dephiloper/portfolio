@@ -1,3 +1,3 @@
-# HeadKino website
+# Personal website
 
 lorem ipsum dolar
