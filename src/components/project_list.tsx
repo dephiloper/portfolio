@@ -44,27 +44,50 @@ const ProjectGrid: React.FC<{ projects: Project[]; onProjectClick: (project: Pro
   );
 };
 
-const ProjectItem: React.FC<{ project: Project; onClick: (project: Project) => void }> = ({ project, onClick }) => (
-  <div className="project-grid-item" onClick={() => onClick(project)} style={{ cursor: 'pointer' }}>
-    <div className="image-container">
-      <img src={project.image} alt={project.title} />
-      <div className="project-info-overlay">
-        <p className="project-meta">
-          {project.company && <span>{project.company}</span>}
-          {project.year && <span> • {project.year}</span>}
-          {project.role && (
-            <>
-              <br />
-              <em>{project.role}</em>
-            </>
-          )}
-        </p>
-        <p className="project-description">{project.description}</p>
+const ProjectItem: React.FC<{ project: Project; onClick: (project: Project) => void }> = ({ project, onClick }) => {
+  const isHauntedCleaner = project.id == 1;
+
+  return (
+    <div
+      className={`project-grid-item ${isHauntedCleaner ? 'haunted-cleaner' : ''}`}
+      onClick={() => onClick(project)}
+      style={{ cursor: 'pointer' }}
+    >
+      {isHauntedCleaner && (
+        <>
+          <img
+            src="/Char_Rebecca_Ghost.webp"
+            className="ghost-image ghost-left"
+            alt="Char Jones Ghost"
+          />
+          <img
+            src="/Char_Jones.webp"
+            className="ghost-image ghost-right"
+            alt="Rebecca Ghost"
+          />
+        </>
+      )}
+      <div className="image-container">
+        <img src={project.image} alt={project.title} />
+        <div className="project-info-overlay">
+          <p className="project-meta">
+            {project.company && <span>{project.company}</span>}
+            {project.year && <span> • {project.year}</span>}
+            {project.role && (
+              <>
+                <br />
+                <em>{project.role}</em>
+              </>
+            )}
+          </p>
+          <p className="project-description">{project.description}</p>
+        </div>
       </div>
+      <h3 className="project-title">{project.title}</h3>
     </div>
-    <h3 className="project-title">{project.title}</h3>
-  </div>
-);
+  );
+};
+
 
 const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);

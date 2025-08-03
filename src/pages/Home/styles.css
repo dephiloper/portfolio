@@ -1,6 +1,35 @@
 /* ========== FONT IMPORT ========== */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
+@font-face {
+  font-family: 'Caudex';
+  src: url('/fonts/Caudex-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Caudex';
+  src: url('/fonts/Caudex-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Caudex';
+  src: url('/fonts/Caudex-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Caudex';
+  src: url('/fonts/Caudex-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+
 /* ========== GLOBAL STYLES ========== */
 html, body {
   margin: 0;
@@ -47,12 +76,13 @@ html, body {
 }
 
 .nav-left h1.nav-name {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: #5300bc;
   text-transform: uppercase;
   margin: 0;
   letter-spacing: 1px;
+  font-family: 'Caudex', serif;
 }
 
 .nav-right {
@@ -134,6 +164,67 @@ html, body {
   flex-direction: column;
   align-items: center;
 }
+
+.project-grid-item.haunted-cleaner {
+  position: relative;
+  overflow: visible; /* allow overflow */
+}
+
+.project-grid-item.haunted-cleaner .ghost-image {
+  position: absolute;
+  top: 50%;
+  width: 172.5px; /* 15% bigger */
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.project-grid-item.haunted-cleaner .ghost-left {
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%) rotate(-55deg);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.project-grid-item.haunted-cleaner .ghost-right {
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%) rotate(55deg);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.project-grid-item.haunted-cleaner:hover .ghost-left {
+  --x: -104px;
+  --y: -70%;
+  --r: -55deg;
+  opacity: 1;
+  transform: translate(var(--x), var(--y)) rotate(var(--r));
+  animation: bounce 0.6s ease infinite alternate;
+}
+
+.project-grid-item.haunted-cleaner:hover .ghost-right {
+  --x: 104px;
+  --y: -70%;
+  --r: 55deg;
+  opacity: 1;
+  transform: translate(var(--x), var(--y)) rotate(var(--r));
+  animation: bounce 0.6s ease infinite alternate;
+}
+
+.project-grid-item.haunted-cleaner:not(:hover) .ghost-left,
+.project-grid-item.haunted-cleaner:not(:hover) .ghost-right {
+  animation: none;
+  opacity: 0;
+  transform: translate(0, -50%) rotate(var(--r, 0deg));
+}
+
+@keyframes bounce {
+  0%   { transform: translate(var(--x), var(--y)) rotate(var(--r)) translateY(0); }
+  100% { transform: translate(var(--x), var(--y)) rotate(var(--r)) translateY(-15px); }
+}
+
+
 
 /* ========== IMAGE CONTAINER ========== */
 .image-container {
