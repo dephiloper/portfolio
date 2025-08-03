@@ -18,6 +18,15 @@ html, body {
   box-sizing: inherit;
 }
 
+/* ========== REUSABLE FONT STYLES ========== */
+.project-heading-style {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #5300bc;
+}
+
 /* ========== NAVIGATION BAR ========== */
 .nav {
   position: fixed;
@@ -77,22 +86,18 @@ html, body {
 .project-list {
   margin-top: 100px;
   padding: 0 1rem 3rem;
-  width: 75vw;
+  width: 85vw;
   max-width: 1200px;
 }
 
-.project-list h2 {
+.project-list > h2 {
   margin: 4rem 0 2rem;
   text-align: left;
-  font-size: 1.5rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: #5300bc;
   position: relative;
   padding-left: 1.5rem;
 }
 
-.project-list h2::before {
+.project-list > h2::before {
   content: '◆';
   position: absolute;
   left: 0;
@@ -119,7 +124,6 @@ html, body {
   justify-content: flex-start;
 }
 
-/* Individual grid item */
 .project-grid-item {
   position: relative;
   width: calc(50% - 0.5rem);
@@ -178,12 +182,10 @@ html, body {
   pointer-events: auto;
 }
 
-/* Remove project title from overlay */
 .project-info-overlay h3 {
   display: none;
 }
 
-/* Meta info (company, year, role) */
 .project-meta {
   font-size: 0.9rem;
   opacity: 0.85;
@@ -197,7 +199,6 @@ html, body {
   opacity: 0.75;
 }
 
-/* Description inside overlay */
 .project-description {
   font-size: 0.9rem;
   font-weight: 400;
@@ -214,41 +215,190 @@ html, body {
   width: 100%;
 }
 
+/* ========== MODAL STYLES ========== */
 .project-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(30, 0, 50, 0.7);
+  background: rgba(83, 0, 188, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .project-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
   background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 800px;
-  width: 90vw;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
+  max-width: 1200px;
+  height: 75vh;
+  width: 840px;
+  outline: 1.5px solid #6a0dad;
+  border-radius: 0;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  overflow: visible;
+  padding: 10px 20px 20px;
+  box-sizing: border-box;
+  opacity: 0;
+  animation: scaleIn 0.2s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
 .project-modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 10px;
+  right: 10px;
   background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
-  color: #5300bc;
+  z-index: 10;
+  color: #6a0dad;
 }
 
+.project-modal-close:hover {
+  color: #000;
+}
+
+.project-modal-content {
+  max-width: 85%;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+.project-modal-title {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.project-modal-title::before {
+  content: none;
+  display: none;
+}
+
+.project-modal-meta {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.project-modal-meta strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.project-modal-image,
+.project-modal-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+  opacity: 0;
+  animation: fadeInContent 0.3s ease-in-out forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInContent {
+  to {
+    opacity: 1;
+  }
+}
+
+.project-modal-role {
+  font-style: italic;
+  color: #5300bc;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.project-modal-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.project-modal-long-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* Modal Links */
+.project-modal-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-modal-link {
+  text-decoration: none;
+  color: #fff;
+  background-color: #5300bc;
+  font-weight: 600;
+  border: 0.2px solid #fff;
+  padding: 8px 16px;
+  border-radius: 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.project-modal-link:hover,
+.project-modal-link:focus {
+  background-color: #6a24d6;
+  box-shadow: 0 4px 8px rgba(83, 0, 188, 0.3);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.project-modal-link:visited {
+  color: white;
+}
+
+.fixed-project-modal-links {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 0;
+  display: flex;
+  gap: 20px;
+  z-index: 1050;
+}
 
 /* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 1024px) {
@@ -298,7 +448,7 @@ html, body {
     padding-left: 0;
   }
 
-  .project-list h2::before {
+  .project-list > h2::before {
     position: static;
     margin-right: 0.4rem;
   }
