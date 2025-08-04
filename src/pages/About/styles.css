@@ -1,0 +1,127 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 40vw;
+  margin: 5rem auto 3rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.about-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #5300bc;
+  text-transform: uppercase;
+}
+
+.about-avatar {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #5300bc;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.about-text {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.about-text strong {
+  color: #5300bc;
+  font-weight: 600;
+}
+
+.about-button {
+  text-transform: uppercase;
+  padding: 12px 24px;
+  margin-bottom: 2.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.about-divider {
+  height: 1px;
+  background-color: #ddd;
+  border: none;
+  width: 100%;
+  margin: 2rem 0 2.5rem;
+}
+
+.about-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.about-social-link {
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.about-inline-link {
+  text-decoration: underline;
+  color: #5300bc;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.about-inline-link:hover {
+  color: #6a24d6;
+}
+
+.about-headkino-logo {
+  margin-top: 1.5rem;
+  max-height: 15vw;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+}
+
+.about-inline-image-wrapper {
+  max-width: 40vw;
+  margin: 1.5rem auto;
+  border: 1px solid #5300bc; /* super thin purple border */
+  overflow: hidden; /* ensures border radius clips children */
+  font-family: 'YourHomePageFontFamily', sans-serif; /* replace with your homepage font-family */
+}
+
+.about-inline-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: none;
+}
+
+.about-inline-image-caption {
+  padding: 0.3rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #5300bc;
+  font-weight: 600;
+  background: #fafafa; /* subtle background inside border */
+  user-select: none;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(20deg); }
+  30% { transform: rotate(-15deg); }
+  45% { transform: rotate(20deg); }
+  60% { transform: rotate(-15deg); }
+  75% { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.wave-emoji {
+  display: inline-block;      /* needed to animate transform */
+  transform-origin: 70% 70%;  /* pivot point near the bottom right of emoji */
+  animation: wave 2.5s ease-in-out infinite;
+}

@@ -1,35 +1,6 @@
 /* ========== FONT IMPORT ========== */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
-@font-face {
-  font-family: 'Caudex';
-  src: url('/fonts/Caudex-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Caudex';
-  src: url('/fonts/Caudex-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Caudex';
-  src: url('/fonts/Caudex-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Caudex';
-  src: url('/fonts/Caudex-BoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-}
-
-
 /* ========== GLOBAL STYLES ========== */
 html, body {
   margin: 0;
@@ -77,12 +48,11 @@ html, body {
 
 .nav-left h1.nav-name {
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 1000;
   color: #5300bc;
   text-transform: uppercase;
   margin: 0;
   letter-spacing: 1px;
-  font-family: 'Caudex', serif;
 }
 
 .nav-right {
@@ -109,6 +79,25 @@ html, body {
 }
 
 .nav-links li a:hover {
+  color: #000;
+}
+
+.nav-link-button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #5300bc;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-link-button:hover {
   color: #000;
 }
 
@@ -490,6 +479,42 @@ html, body {
   gap: 20px;
   z-index: 1050;
 }
+
+.swal2-container {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(83, 0, 188, 0.3) !important; /* same as your modal backdrop */
+}
+
+.swal-with-iframe {
+  padding: 0;
+  background: #fff !important;
+  border-radius: 0;
+  border: 1.5px solid #6a0dad;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@keyframes contactModalIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Optional: match iframe spacing */
+.swal-with-iframe iframe {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+}
+
+
 
 /* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 1024px) {

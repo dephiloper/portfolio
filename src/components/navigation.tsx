@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './../pages/Home/styles.css';
+import { openContactForm } from '../utils/openContactForm'
 
-interface NavigationProps {}
+interface NavigationProps { }
 
 const Navigation: React.FC<NavigationProps> = () => {
   return (
@@ -19,7 +20,7 @@ const Navigation: React.FC<NavigationProps> = () => {
             <Link to="/">Portfolio</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <button className="nav-link-button" onClick={() => openContactForm()}>Contact</button>
           </li>
         </ul>
       </div>

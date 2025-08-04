@@ -17,7 +17,7 @@ const projects: Project[] = [
       </br>
       </br>
       <strong>HAUNTED CLEANER</strong> is the first standalone indie game project that I'm co-designing together with my work partner. The project got funded by the <a href="https://www.linkedin.com/posts/pboensch_new-media-f%C3%B6rderung-38-mio-euro-f%C3%BCr-25-activity-7353700190555365376-vkXz?utm_source=share&utm_medium=member_desktop&rcm=ACoAACmCikQB2fIQnGrDF-xYu8m6THjV7BGLlOw" target="_blank" rel="noopener noreferrer">Medienboard Berlin Brandenburg</a>.`,
-    role: 'Lead Game Design & Programming',
+    role: 'Lead Game Design - Co-Design, Technical Design',
     websiteLink: 'https://headkino.com',
   },
   {
@@ -34,7 +34,7 @@ const projects: Project[] = [
       </br>
       </br>
       While working on Hexa Stack I <strong>implemented gameplay</strong> for several in-game boosters and blockers, worked on the <strong>UI</strong> and created the <strong>logic for the store</strong>.`,
-    role: 'Programming - Gameplay, UI, Animations, Game Economy',
+    role: 'Gameplay, UI, Animations, Game Economy - Programming',
     projectLink: 'https://www.facebook.com/gaming/play/408305982143225/?source=fb_gg_url&ext=1754401269&hash=AeTu8bnZfhO8GkqAepo',
     websiteLink: 'https://www.facebook.com/profile.php?id=61559724179331'
   },
@@ -52,7 +52,7 @@ const projects: Project[] = [
       </br>
       </br>
       As part of the game's production I was focusing on programming <strong>gameplay features</strong>, developing a standalone <strong>level editor</strong>, setting up in-game <strong>animations</strong>, <strong>LiveOps</strong> as well as creating visual effects using <strong>shaders</strong>.`,
-    role: 'Programming & Technical Art - Gameplay, Tooling, LiveOps, UI, Animations',
+    role: 'Gameplay, Tooling, LiveOps, UI, Animations - Technical Art & Programming',
     projectLink: 'https://www.facebook.com/gaming/play/360340958508346/?source=fb_gg_url&ext=1754401661&hash=AeT34tnLkbBJ73zGd7w',
     websiteLink: 'https://www.facebook.com/solitairehomestoryhub'
   },

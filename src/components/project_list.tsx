@@ -12,7 +12,7 @@ export interface Project {
   longDescription?: string;
   role?: string;
   image: string;
-  video?: string; // <-- optional video URL (webm)
+  video?: string;
   type: 'commercial' | 'private' | 'technical-art';
   websiteLink?: string;
   projectLink?: string;
@@ -45,7 +45,7 @@ const ProjectGrid: React.FC<{ projects: Project[]; onProjectClick: (project: Pro
 };
 
 const ProjectItem: React.FC<{ project: Project; onClick: (project: Project) => void }> = ({ project, onClick }) => {
-  const isHauntedCleaner = project.id == 1;
+  const isHauntedCleaner = project.id === 1;
 
   return (
     <div
@@ -55,16 +55,8 @@ const ProjectItem: React.FC<{ project: Project; onClick: (project: Project) => v
     >
       {isHauntedCleaner && (
         <>
-          <img
-            src="/Char_Rebecca_Ghost.webp"
-            className="ghost-image ghost-left"
-            alt="Char Jones Ghost"
-          />
-          <img
-            src="/Char_Jones.webp"
-            className="ghost-image ghost-right"
-            alt="Rebecca Ghost"
-          />
+          <img src="/Char_Rebecca_Ghost.webp" className="ghost-image ghost-left" alt="Char Jones Ghost" />
+          <img src="/Char_Jones.webp" className="ghost-image ghost-right" alt="Rebecca Ghost" />
         </>
       )}
       <div className="image-container">
@@ -88,10 +80,20 @@ const ProjectItem: React.FC<{ project: Project; onClick: (project: Project) => v
   );
 };
 
-
 const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  // Load project from URL param on mount
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const id = query.get('project');
+    if (id) {
+      const project = projects.find((p) => p.id === parseInt(id));
+      if (project) setSelectedProject(project);
+    }
+  }, [projects]);
+
+  // Scroll lock logic
   useEffect(() => {
     if (selectedProject) {
       const scrollY = window.scrollY;
@@ -100,12 +102,21 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
       document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
 
+      // Update URL
+      const newUrl = `${window.location.pathname}?project=${selectedProject.id}`;
+      window.history.pushState({}, '', newUrl);
+
       return () => {
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.width = '';
         document.body.style.overflow = '';
         window.scrollTo(0, scrollY);
+
+        // Remove project param from URL
+        const url = new URL(window.location.href);
+        url.searchParams.delete('project');
+        window.history.pushState({}, '', url.pathname);
       };
     }
   }, [selectedProject]);
@@ -141,7 +152,6 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
 
             <div className="project-modal-content">
               <h2 className="project-modal-title project-heading-style">{selectedProject.title}</h2>
-
               <div className="project-modal-meta">
                 <strong>{selectedProject.company}</strong>
                 {selectedProject.year && <span> • {selectedProject.year}</span>}
@@ -166,9 +176,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
                 />
               )}
 
-              {selectedProject.role && (
-                <div className="project-modal-role">{selectedProject.role}</div>
-              )}
+              {selectedProject.role && <div className="project-modal-role">{selectedProject.role}</div>}
 
               {selectedProject.longDescription && (
                 <div className="project-modal-long-description">
@@ -181,32 +189,17 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
           {(selectedProject.projectLink || selectedProject.githubLink || selectedProject.websiteLink) && (
             <div className="fixed-project-modal-links" onClick={(e) => e.stopPropagation()}>
               {selectedProject.projectLink && (
-                <a
-                  href={selectedProject.projectLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-modal-link"
-                >
+                <a href={selectedProject.projectLink} target="_blank" rel="noopener noreferrer" className="project-modal-link">
                   🎮 Play Game
                 </a>
               )}
               {selectedProject.githubLink && (
-                <a
-                  href={selectedProject.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-modal-link"
-                >
+                <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className="project-modal-link">
                   📁 View Code
                 </a>
               )}
               {selectedProject.websiteLink && (
-                <a
-                  href={selectedProject.websiteLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-modal-link"
-                >
+                <a href={selectedProject.websiteLink} target="_blank" rel="noopener noreferrer" className="project-modal-link">
                   🌐 Show Website
                 </a>
               )}
