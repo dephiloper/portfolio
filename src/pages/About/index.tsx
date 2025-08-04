@@ -19,7 +19,7 @@ export default function About() {
 
                 <div className="about-text">
                     <p>
-                        Hello there, it's a pleasure to meet you <span className="wave-emoji">✌️</span>!
+                        Hello there, it's a pleasure to meet you! <span className="wave-emoji">✌️</span>
                     </p>
                     <p>
                         My name is <strong>Philipp Bönsch</strong>, I'm an indie game developer with a focus on <strong>technical art</strong> and <strong>game design</strong>.
@@ -32,12 +32,12 @@ export default function About() {
                             className="about-inline-image"
                         />
                         <div className="about-inline-image-caption">
-                            prototype screenshot - Haunted Cleaner
+                            Early Prototype - Haunted Cleaner
                         </div>
                     </div>
 
                     <p>
-                        I'm currently co-designing on my first game project <a href="/?project=1" className="about-inline-link"><strong>Haunted Cleaner</strong></a>, which is a wholesome game about tidying up rooms to help the ghosts living in them 👻.
+                        I'm currently co-designing on my first game project <a href="/?project=1" className="about-inline-link"><strong>Haunted Cleaner</strong></a>, which is a wholesome game about tidying up rooms to help the ghosts living in them. 👻
                     </p>
 
                     <br />

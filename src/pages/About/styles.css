@@ -125,3 +125,59 @@
   transform-origin: 70% 70%;  /* pivot point near the bottom right of emoji */
   animation: wave 2.5s ease-in-out infinite;
 }
+
+@media (max-width: 640px) {
+  .about-container {
+    max-width: 90vw;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-avatar {
+    max-width: 150px; /* slightly smaller */
+    max-height: 150px;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text {
+    font-size: 0.95rem; /* 1 unit smaller */
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: center; /* center text for better appearance */
+  }
+
+  .about-inline-image-wrapper {
+    max-width: 100%; /* allow full width */
+    margin: 1.5rem 0;
+  }
+
+  .about-inline-image-caption {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
+
+  .about-button {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    margin-bottom: 2rem;
+  }
+
+  .about-socials {
+    flex-direction: row; /* put social buttons side-by-side */
+    gap: 0.5rem; /* smaller gap */
+    align-items: center;
+    justify-content: center; /* center them horizontally */
+    margin-bottom: 1rem; /* reduce space below socials */
+  }
+
+  .about-social-link {
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .about-headkino-logo {
+    max-height: 35vw; /* made slightly bigger */
+    margin-top: 2rem;
+  }
+}
